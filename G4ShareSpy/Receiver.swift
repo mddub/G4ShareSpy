@@ -18,6 +18,7 @@ public protocol ReceiverDelegate: class {
 
     func receiver(receiver: Receiver, didError error: ErrorType)
 
+    // Optional diagnostic logging
     func receiver(receiver: Receiver, didLogBluetoothEvent event: String)
 }
 

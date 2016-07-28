@@ -12,6 +12,10 @@
 import CoreBluetooth
 import Foundation
 
+public enum BluetoothManagerError: ErrorType {
+    case FailedToFindConnectedReceiver
+}
+
 protocol BluetoothManagerDelegate: class {
 
     /**
@@ -44,8 +48,6 @@ protocol BluetoothManagerDelegate: class {
 
 class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
 
-    var stayConnected = true
-
     weak var delegate: BluetoothManagerDelegate?
 
     private var manager: CBCentralManager! = nil
@@ -64,55 +66,46 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 
     // MARK: - Actions
 
-    func scanForPeripheral() {
-        guard manager.state == .PoweredOn else {
-            return
-        }
-
-        let receiverService = CBUUID(string: ReceiverServiceUUID.CGMService.rawValue)
-
-        if let peripheral = manager.retrieveConnectedPeripheralsWithServices([receiverService]).first {
-            delegate?.bluetoothManagerDidLogEvent(self, event: "scanForPeripheral: Was among connected peripherals, reconnecting")
-            connectPeripheral(peripheral)
-        } else {
-            delegate?.bluetoothManagerDidLogEvent(self, event: "scanForPeripheral: Scanning")
-            manager.scanForPeripheralsWithServices([receiverService], options: nil)
-        }
+    func findPeripheral() {
+        findConnectedReceiver(withRetries: 12)
     }
 
     func disconnect() {
-        manager.stopScan()
-
         if let peripheral = peripheral {
             manager.cancelPeripheralConnection(peripheral)
         }
     }
 
     deinit {
-        stayConnected = false
         disconnect()
     }
 
-    private func connectPeripheral(peripheral: CBPeripheral) {
-        self.peripheral = peripheral
-        peripheral.delegate = self
-        manager.connectPeripheral(peripheral, options: nil)
-    }
-
     /**
-     Can't hurt to leave this in here, from @loudnate's xDripG5:
-
-     "Persistent connections don't seem to work with the transmitter shutoff: The OS won't re-wake the
-     app unless it's scanning.
-
-     The sleep gives the transmitter time to shut down, but keeps the app running."
+     We expect the Dexcom Share app to discover and connect to the receiver, so we should never need
+     to scan. Instead, we wait for the receiver to appear in the list of connected peripherals.
      */
-    private func scanAfterDelay() {
-        delegate?.bluetoothManagerDidLogEvent(self, event: "scanAfterDelay")
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)) {
-            NSThread.sleepForTimeInterval(2)
+    private func findConnectedReceiver(withRetries retries: Int) {
+        delegate?.bluetoothManagerDidLogEvent(self, event: "findConnectedReceiver: retries = \(retries)")
 
-            self.scanForPeripheral()
+        guard manager.state == .PoweredOn else {
+            return
+        }
+
+        guard retries > 0 else {
+            delegate?.bluetoothManager(self, didError: BluetoothManagerError.FailedToFindConnectedReceiver)
+            return
+        }
+
+        if let peripheral = manager.retrieveConnectedPeripheralsWithServices([CBUUID(string: ReceiverServiceUUID.CGMService.rawValue)]).first {
+            delegate?.bluetoothManagerDidLogEvent(self, event: "findConnectedReceiver: Found among connected peripherals, connecting")
+            self.peripheral = peripheral
+            peripheral.delegate = self
+            manager.connectPeripheral(peripheral, options: nil)
+        } else {
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)) {
+                NSThread.sleepForTimeInterval(10)
+                self.findConnectedReceiver(withRetries: retries - 1)
+            }
         }
     }
 
@@ -125,10 +118,10 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             if let peripheral = peripheral {
                 central.connectPeripheral(peripheral, options: nil)
             } else {
-                scanForPeripheral()
+                findPeripheral()
             }
         case .Resetting, .PoweredOff, .Unauthorized, .Unknown, .Unsupported:
-            central.stopScan()
+            break
         }
     }
 
@@ -139,26 +132,16 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         }
     }
 
-    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        delegate?.bluetoothManagerDidLogEvent(self, event: "didDiscoverPeripheral")
-        connectPeripheral(peripheral)
-    }
-
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
-        central.stopScan()
-
+        let service = CBUUID(string: ReceiverServiceUUID.CGMService.rawValue)
         let knownServiceUUIDs = peripheral.services?.flatMap({ $0.UUID }) ?? []
 
-        let servicesToDiscover = [
-            CBUUID(string: ReceiverServiceUUID.CGMService.rawValue)
-        ].filter({ !knownServiceUUIDs.contains($0) })
-
-        if servicesToDiscover.count > 0 {
-            delegate?.bluetoothManagerDidLogEvent(self, event: "didConnectPeripheral: discovering services")
-            peripheral.discoverServices(servicesToDiscover)
-        } else {
+        if knownServiceUUIDs.contains(service) {
             delegate?.bluetoothManagerDidLogEvent(self, event: "didConnectPeripheral: already discovered services")
             self.peripheral(peripheral, didDiscoverServices: nil)
+        } else {
+            delegate?.bluetoothManagerDidLogEvent(self, event: "didConnectPeripheral: discovering services")
+            peripheral.discoverServices([service])
         }
     }
 
@@ -167,9 +150,8 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         if let error = error {
             delegate?.bluetoothManager(self, didError: error)
         }
-        if stayConnected {
-            scanAfterDelay()
-        }
+        // Connection requests persist until the device reappears.
+        central.connectPeripheral(peripheral, options: nil)
     }
 
     func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
@@ -177,9 +159,8 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         if let error = error {
             delegate?.bluetoothManager(self, didError: error)
         }
-        if stayConnected {
-            scanAfterDelay()
-        }
+        // Connection requests persist until the device reappears.
+        central.connectPeripheral(peripheral, options: nil)
     }
 
     // MARK: - CBPeripheralDelegate
@@ -212,13 +193,15 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         for characteristic in service.characteristics ?? [] {
             peripheral.setNotifyValue(true, forCharacteristic: characteristic)
         }
-        self.delegate?.bluetoothManagerIsReady(self)
     }
 
     func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         delegate?.bluetoothManagerDidLogEvent(self, event: "didUpdateNotificationStateForCharacteristic: \(characteristic.UUID.UUIDString) \(characteristic.isNotifying)")
         if let error = error {
             delegate?.bluetoothManager(self, didError: error)
+        }
+        if characteristic.isNotifying {
+            self.delegate?.bluetoothManagerIsReady(self)
         }
     }
 
