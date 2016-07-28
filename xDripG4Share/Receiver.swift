@@ -19,6 +19,12 @@ public protocol ReceiverDelegate: class {
     func receiver(receiver: Receiver, didReceiveHeartbeat heartbeat: Bool)
 
     func receiver(receiver: Receiver, didError error: ErrorType)
+
+    func receiver(receiver: Receiver, didLogBluetoothEvent event: String)
+}
+
+extension ReceiverDelegate {
+    func receiver(receiver: Receiver, didLogBluetoothEvent event: String) {}
 }
 
 public class Receiver: BluetoothManagerDelegate {
@@ -65,6 +71,10 @@ public class Receiver: BluetoothManagerDelegate {
 
     func bluetoothManagerDidReceiveHeartbeat(manager: BluetoothManager) {
         self.delegate?.receiver(self, didReceiveHeartbeat: true)
+    }
+
+    func bluetoothManagerDidLogEvent(manager: BluetoothManager, event: String) {
+        self.delegate?.receiver(self, didLogBluetoothEvent: event)
     }
 
     // MARK: - Helpers
