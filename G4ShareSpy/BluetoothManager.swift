@@ -37,14 +37,6 @@ protocol BluetoothManagerDelegate: class {
     func bluetoothManager(manager: BluetoothManager, didReceiveBytes bytes: NSData)
 
     /**
-     Tells the delegate that the "Heartbeat" characteristic has notified
-
-     - parameter manager:             The bluetooth manager
-     - parameter didReceiveHeartbeat: True
-     */
-    func bluetoothManagerDidReceiveHeartbeat(manager: BluetoothManager)
-
-    /**
      Diagnostic logging
      */
     func bluetoothManagerDidLogEvent(manager: BluetoothManager, event: String)
@@ -198,19 +190,15 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             return
         }
         for service in peripheral.services ?? [] where service.UUID.UUIDString == ReceiverServiceUUID.CGMService.rawValue {
+            let characteristic = CBUUID(string: CGMServiceCharacteristicUUID.Rx.rawValue)
             let knownCharacteristics = service.characteristics?.flatMap({ $0.UUID }) ?? []
 
-            let characteristicsToDiscover = [
-                CBUUID(string: CGMServiceCharacteristicUUID.Rx.rawValue),
-                CBUUID(string: CGMServiceCharacteristicUUID.Heartbeat.rawValue)
-            ].filter({ !knownCharacteristics.contains($0) })
-
-            if characteristicsToDiscover.count > 0 {
-                delegate?.bluetoothManagerDidLogEvent(self, event: "didDiscoverServices: discovering characteristics")
-                peripheral.discoverCharacteristics(characteristicsToDiscover, forService: service)
-            } else {
+            if knownCharacteristics.contains(characteristic) {
                 delegate?.bluetoothManagerDidLogEvent(self, event: "didDiscoverServices: already discovered characteristics")
                 self.peripheral(peripheral, didDiscoverCharacteristicsForService: service, error: nil)
+            } else {
+                delegate?.bluetoothManagerDidLogEvent(self, event: "didDiscoverServices: discovering characteristics")
+                peripheral.discoverCharacteristics([characteristic], forService: service)
             }
         }
     }
@@ -240,11 +228,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             return
         }
         if let value = characteristic.value {
-            if characteristic.UUID.UUIDString == CGMServiceCharacteristicUUID.Rx.rawValue {
-                self.delegate?.bluetoothManager(self, didReceiveBytes: value)
-            } else if characteristic.UUID.UUIDString == CGMServiceCharacteristicUUID.Heartbeat.rawValue {
-                self.delegate?.bluetoothManagerDidReceiveHeartbeat(self)
-            }
+            self.delegate?.bluetoothManager(self, didReceiveBytes: value)
         }
     }
 }

@@ -16,8 +16,6 @@ public enum ReceiverError: ErrorType {
 public protocol ReceiverDelegate: class {
     func receiver(receiver: Receiver, didReadGlucoseHistory glucoseHistory: [GlucoseG4])
 
-    func receiver(receiver: Receiver, didReceiveHeartbeat heartbeat: Bool)
-
     func receiver(receiver: Receiver, didError error: ErrorType)
 
     func receiver(receiver: Receiver, didLogBluetoothEvent event: String)
@@ -67,10 +65,6 @@ public class Receiver: BluetoothManagerDelegate {
                 self.delegate?.receiver(self, didError: ReceiverError.UnexpectedBytes(data: bytes))
             }
         }
-    }
-
-    func bluetoothManagerDidReceiveHeartbeat(manager: BluetoothManager) {
-        self.delegate?.receiver(self, didReceiveHeartbeat: true)
     }
 
     func bluetoothManagerDidLogEvent(manager: BluetoothManager, event: String) {
