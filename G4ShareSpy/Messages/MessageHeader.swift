@@ -1,6 +1,6 @@
 //
 //  MessageHeader.swift
-//  xDripG4Share
+//  G4ShareSpy
 //
 //  Created by Mark Wilson on 7/10/16.
 //  Copyright © 2016 Mark Wilson. All rights reserved.

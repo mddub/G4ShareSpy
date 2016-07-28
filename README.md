@@ -1,4 +1,4 @@
-# xDripG4Share
+# G4ShareSpy
 
 An iOS framework to read data from a Dexcom G4 Share receiver over Bluetooth.
 

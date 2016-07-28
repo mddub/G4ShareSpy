@@ -1,6 +1,6 @@
 //
 //  BluetoothManager.swift
-//  xDripG4Share
+//  G4ShareSpy
 //
 //  Adapted heavily from xDripG5 by @loudnate:
 //  https://github.com/loudnate/xDripG5/blob/c6b506/xDripG5/BluetoothManager.swift
@@ -62,12 +62,12 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 
     // MARK: - GCD Management
 
-    private var managerQueue = dispatch_queue_create("com.warkmilson.xDripG4Share.bluetoothManagerQueue", dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INITIATED, 0))
+    private var managerQueue = dispatch_queue_create("com.warkmilson.G4ShareSpy.bluetoothManagerQueue", dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INITIATED, 0))
 
     override init() {
         super.init()
 
-        manager = CBCentralManager(delegate: self, queue: managerQueue, options: [CBCentralManagerOptionRestoreIdentifierKey: "com.warkmilson.xDripG4Share"])
+        manager = CBCentralManager(delegate: self, queue: managerQueue, options: [CBCentralManagerOptionRestoreIdentifierKey: "com.warkmilson.G4ShareSpy"])
     }
 
     // MARK: - Actions

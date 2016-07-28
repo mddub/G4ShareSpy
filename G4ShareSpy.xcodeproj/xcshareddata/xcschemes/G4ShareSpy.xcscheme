@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4DCEF24F1D41A2A200724BCD"
-               BuildableName = "xDripG4Share.framework"
-               BlueprintName = "xDripG4Share"
-               ReferencedContainer = "container:xDripG4Share.xcodeproj">
+               BuildableName = "G4ShareSpy.framework"
+               BlueprintName = "G4ShareSpy"
+               ReferencedContainer = "container:G4ShareSpy.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4DCEF2591D41A2A200724BCD"
-               BuildableName = "xDripG4ShareTests.xctest"
-               BlueprintName = "xDripG4ShareTests"
-               ReferencedContainer = "container:xDripG4Share.xcodeproj">
+               BuildableName = "G4ShareSpyTests.xctest"
+               BlueprintName = "G4ShareSpyTests"
+               ReferencedContainer = "container:G4ShareSpy.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4DCEF24F1D41A2A200724BCD"
-            BuildableName = "xDripG4Share.framework"
-            BlueprintName = "xDripG4Share"
-            ReferencedContainer = "container:xDripG4Share.xcodeproj">
+            BuildableName = "G4ShareSpy.framework"
+            BlueprintName = "G4ShareSpy"
+            ReferencedContainer = "container:G4ShareSpy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4DCEF24F1D41A2A200724BCD"
-            BuildableName = "xDripG4Share.framework"
-            BlueprintName = "xDripG4Share"
-            ReferencedContainer = "container:xDripG4Share.xcodeproj">
+            BuildableName = "G4ShareSpy.framework"
+            BlueprintName = "G4ShareSpy"
+            ReferencedContainer = "container:G4ShareSpy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -83,9 +83,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4DCEF24F1D41A2A200724BCD"
-            BuildableName = "xDripG4Share.framework"
-            BlueprintName = "xDripG4Share"
-            ReferencedContainer = "container:xDripG4Share.xcodeproj">
+            BuildableName = "G4ShareSpy.framework"
+            BlueprintName = "G4ShareSpy"
+            ReferencedContainer = "container:G4ShareSpy.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

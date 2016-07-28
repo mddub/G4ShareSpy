@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4D80122A1D4205A5006A7044 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8012291D4205A5006A7044 /* NSData.swift */; };
-		4DCEF2541D41A2A200724BCD /* xDripG4Share.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DCEF2531D41A2A200724BCD /* xDripG4Share.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4DCEF25B1D41A2A200724BCD /* xDripG4Share.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCEF2501D41A2A200724BCD /* xDripG4Share.framework */; };
+		4DCEF2541D41A2A200724BCD /* G4ShareSpy.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DCEF2531D41A2A200724BCD /* G4ShareSpy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DCEF25B1D41A2A200724BCD /* G4ShareSpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCEF2501D41A2A200724BCD /* G4ShareSpy.framework */; };
 		4DCEF2601D41A2A200724BCD /* GlucoseHistoryMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEF25F1D41A2A200724BCD /* GlucoseHistoryMessageTests.swift */; };
 		4DCEF2781D41A2E800724BCD /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEF26A1D41A2E800724BCD /* BluetoothManager.swift */; };
 		4DCEF2791D41A2E800724BCD /* BluetoothServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCEF26B1D41A2E800724BCD /* BluetoothServices.swift */; };
@@ -31,16 +31,16 @@
 			containerPortal = 4DCEF2471D41A2A200724BCD /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4DCEF24F1D41A2A200724BCD;
-			remoteInfo = xDripG4Share;
+			remoteInfo = G4ShareSpy;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4D8012291D4205A5006A7044 /* NSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
-		4DCEF2501D41A2A200724BCD /* xDripG4Share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = xDripG4Share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DCEF2531D41A2A200724BCD /* xDripG4Share.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xDripG4Share.h; sourceTree = "<group>"; };
+		4DCEF2501D41A2A200724BCD /* G4ShareSpy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = G4ShareSpy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DCEF2531D41A2A200724BCD /* G4ShareSpy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = G4ShareSpy.h; sourceTree = "<group>"; };
 		4DCEF2551D41A2A200724BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4DCEF25A1D41A2A200724BCD /* xDripG4ShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xDripG4ShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DCEF25A1D41A2A200724BCD /* G4ShareSpyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = G4ShareSpyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCEF25F1D41A2A200724BCD /* GlucoseHistoryMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseHistoryMessageTests.swift; sourceTree = "<group>"; };
 		4DCEF2611D41A2A200724BCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DCEF26A1D41A2E800724BCD /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DCEF25B1D41A2A200724BCD /* xDripG4Share.framework in Frameworks */,
+				4DCEF25B1D41A2A200724BCD /* G4ShareSpy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,8 +79,8 @@
 		4DCEF2461D41A2A200724BCD = {
 			isa = PBXGroup;
 			children = (
-				4DCEF2521D41A2A200724BCD /* xDripG4Share */,
-				4DCEF25E1D41A2A200724BCD /* xDripG4ShareTests */,
+				4DCEF2521D41A2A200724BCD /* G4ShareSpy */,
+				4DCEF25E1D41A2A200724BCD /* G4ShareSpyTests */,
 				4DCEF2511D41A2A200724BCD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,16 +88,16 @@
 		4DCEF2511D41A2A200724BCD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4DCEF2501D41A2A200724BCD /* xDripG4Share.framework */,
-				4DCEF25A1D41A2A200724BCD /* xDripG4ShareTests.xctest */,
+				4DCEF2501D41A2A200724BCD /* G4ShareSpy.framework */,
+				4DCEF25A1D41A2A200724BCD /* G4ShareSpyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4DCEF2521D41A2A200724BCD /* xDripG4Share */ = {
+		4DCEF2521D41A2A200724BCD /* G4ShareSpy */ = {
 			isa = PBXGroup;
 			children = (
-				4DCEF2531D41A2A200724BCD /* xDripG4Share.h */,
+				4DCEF2531D41A2A200724BCD /* G4ShareSpy.h */,
 				4DCEF2551D41A2A200724BCD /* Info.plist */,
 				4DCEF26A1D41A2E800724BCD /* BluetoothManager.swift */,
 				4DCEF26B1D41A2E800724BCD /* BluetoothServices.swift */,
@@ -106,17 +106,17 @@
 				4DCEF2711D41A2E800724BCD /* Messages */,
 				4DCEF2771D41A2E800724BCD /* Receiver.swift */,
 			);
-			path = xDripG4Share;
+			path = G4ShareSpy;
 			sourceTree = "<group>";
 		};
-		4DCEF25E1D41A2A200724BCD /* xDripG4ShareTests */ = {
+		4DCEF25E1D41A2A200724BCD /* G4ShareSpyTests */ = {
 			isa = PBXGroup;
 			children = (
 				4D8012291D4205A5006A7044 /* NSData.swift */,
 				4DCEF25F1D41A2A200724BCD /* GlucoseHistoryMessageTests.swift */,
 				4DCEF2611D41A2A200724BCD /* Info.plist */,
 			);
-			path = xDripG4ShareTests;
+			path = G4ShareSpyTests;
 			sourceTree = "<group>";
 		};
 		4DCEF26C1D41A2E800724BCD /* Extensions */ = {
@@ -148,16 +148,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DCEF2541D41A2A200724BCD /* xDripG4Share.h in Headers */,
+				4DCEF2541D41A2A200724BCD /* G4ShareSpy.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		4DCEF24F1D41A2A200724BCD /* xDripG4Share */ = {
+		4DCEF24F1D41A2A200724BCD /* G4ShareSpy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4DCEF2641D41A2A200724BCD /* Build configuration list for PBXNativeTarget "xDripG4Share" */;
+			buildConfigurationList = 4DCEF2641D41A2A200724BCD /* Build configuration list for PBXNativeTarget "G4ShareSpy" */;
 			buildPhases = (
 				4DCEF24B1D41A2A200724BCD /* Sources */,
 				4DCEF24C1D41A2A200724BCD /* Frameworks */,
@@ -168,14 +168,14 @@
 			);
 			dependencies = (
 			);
-			name = xDripG4Share;
-			productName = xDripG4Share;
-			productReference = 4DCEF2501D41A2A200724BCD /* xDripG4Share.framework */;
+			name = G4ShareSpy;
+			productName = G4ShareSpy;
+			productReference = 4DCEF2501D41A2A200724BCD /* G4ShareSpy.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		4DCEF2591D41A2A200724BCD /* xDripG4ShareTests */ = {
+		4DCEF2591D41A2A200724BCD /* G4ShareSpyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4DCEF2671D41A2A200724BCD /* Build configuration list for PBXNativeTarget "xDripG4ShareTests" */;
+			buildConfigurationList = 4DCEF2671D41A2A200724BCD /* Build configuration list for PBXNativeTarget "G4ShareSpyTests" */;
 			buildPhases = (
 				4DCEF2561D41A2A200724BCD /* Sources */,
 				4DCEF2571D41A2A200724BCD /* Frameworks */,
@@ -186,9 +186,9 @@
 			dependencies = (
 				4DCEF25D1D41A2A200724BCD /* PBXTargetDependency */,
 			);
-			name = xDripG4ShareTests;
-			productName = xDripG4ShareTests;
-			productReference = 4DCEF25A1D41A2A200724BCD /* xDripG4ShareTests.xctest */;
+			name = G4ShareSpyTests;
+			productName = G4ShareSpyTests;
+			productReference = 4DCEF25A1D41A2A200724BCD /* G4ShareSpyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -209,7 +209,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4DCEF24A1D41A2A200724BCD /* Build configuration list for PBXProject "xDripG4Share" */;
+			buildConfigurationList = 4DCEF24A1D41A2A200724BCD /* Build configuration list for PBXProject "G4ShareSpy" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -221,8 +221,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4DCEF24F1D41A2A200724BCD /* xDripG4Share */,
-				4DCEF2591D41A2A200724BCD /* xDripG4ShareTests */,
+				4DCEF24F1D41A2A200724BCD /* G4ShareSpy */,
+				4DCEF2591D41A2A200724BCD /* G4ShareSpyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -278,7 +278,7 @@
 /* Begin PBXTargetDependency section */
 		4DCEF25D1D41A2A200724BCD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4DCEF24F1D41A2A200724BCD /* xDripG4Share */;
+			target = 4DCEF24F1D41A2A200724BCD /* G4ShareSpy */;
 			targetProxy = 4DCEF25C1D41A2A200724BCD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -383,10 +383,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = xDripG4Share/Info.plist;
+				INFOPLIST_FILE = G4ShareSpy/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.warkmilson.xDripG4Share;
+				PRODUCT_BUNDLE_IDENTIFIER = com.warkmilson.G4ShareSpy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -401,10 +401,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = xDripG4Share/Info.plist;
+				INFOPLIST_FILE = G4ShareSpy/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.warkmilson.xDripG4Share;
+				PRODUCT_BUNDLE_IDENTIFIER = com.warkmilson.G4ShareSpy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -413,9 +413,9 @@
 		4DCEF2681D41A2A200724BCD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = xDripG4ShareTests/Info.plist;
+				INFOPLIST_FILE = G4ShareSpyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.warkmilson.xDripG4ShareTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.warkmilson.G4ShareSpyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -423,9 +423,9 @@
 		4DCEF2691D41A2A200724BCD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = xDripG4ShareTests/Info.plist;
+				INFOPLIST_FILE = G4ShareSpyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.warkmilson.xDripG4ShareTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.warkmilson.G4ShareSpyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -433,7 +433,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4DCEF24A1D41A2A200724BCD /* Build configuration list for PBXProject "xDripG4Share" */ = {
+		4DCEF24A1D41A2A200724BCD /* Build configuration list for PBXProject "G4ShareSpy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4DCEF2621D41A2A200724BCD /* Debug */,
@@ -442,7 +442,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4DCEF2641D41A2A200724BCD /* Build configuration list for PBXNativeTarget "xDripG4Share" */ = {
+		4DCEF2641D41A2A200724BCD /* Build configuration list for PBXNativeTarget "G4ShareSpy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4DCEF2651D41A2A200724BCD /* Debug */,
@@ -451,7 +451,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4DCEF2671D41A2A200724BCD /* Build configuration list for PBXNativeTarget "xDripG4ShareTests" */ = {
+		4DCEF2671D41A2A200724BCD /* Build configuration list for PBXNativeTarget "G4ShareSpyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4DCEF2681D41A2A200724BCD /* Debug */,

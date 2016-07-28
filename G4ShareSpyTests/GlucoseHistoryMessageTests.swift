@@ -1,13 +1,13 @@
 //
 //  GlucoseHistoryMessageTests.swift
-//  xDripG4ShareTests
+//  G4ShareSpyTests
 //
 //  Created by Mark on 7/21/16.
 //  Copyright © 2016 Mark Wilson. All rights reserved.
 //
 
 import XCTest
-@testable import xDripG4Share
+@testable import G4ShareSpy
 
 let historyBytesHex = [
     "0116020130d200001a0000000402880500000000",
