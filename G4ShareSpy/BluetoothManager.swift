@@ -126,9 +126,14 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     }
 
     func centralManager(central: CBCentralManager, willRestoreState dict: [String : AnyObject]) {
-        delegate?.bluetoothManagerDidLogEvent(self, event: "willRestoreState")
+        delegate?.bluetoothManagerDidLogEvent(self, event: "willRestoreState: self.peripheral is \(peripheral)")
+
         if peripheral == nil, let peripherals = dict[CBCentralManagerRestoredStatePeripheralsKey] as? [CBPeripheral] {
-            self.peripheral = peripherals.first
+            for restored in peripherals {
+                delegate?.bluetoothManagerDidLogEvent(self, event: "willRestoreState: Restoring self.peripheral")
+                self.peripheral = restored
+                restored.delegate = self
+            }
         }
     }
 
