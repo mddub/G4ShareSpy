@@ -185,13 +185,18 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     }
 
     func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
-        delegate?.bluetoothManagerDidLogEvent(self, event: "didDiscoverCharacteristics")
+        delegate?.bluetoothManagerDidLogEvent(self, event: "didDiscoverCharacteristics: discovered \((service.characteristics ?? []).count) characteristic(s)")
         if let error = error {
             delegate?.bluetoothManager(self, didError: error)
             return
         }
         for characteristic in service.characteristics ?? [] {
-            peripheral.setNotifyValue(true, forCharacteristic: characteristic)
+            if characteristic.isNotifying {
+                delegate?.bluetoothManagerDidLogEvent(self, event: "didDiscoverCharacteristics: already notifying: \(characteristic.UUID.UUIDString)")
+            } else {
+                delegate?.bluetoothManagerDidLogEvent(self, event: "didDiscoverCharacteristics: setting notify value: \(characteristic.UUID.UUIDString)")
+                peripheral.setNotifyValue(true, forCharacteristic: characteristic)
+            }
         }
     }
 
