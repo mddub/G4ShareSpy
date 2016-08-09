@@ -8,11 +8,6 @@
 
 import Foundation
 
-public enum ReceiverError: ErrorType {
-    case UnexpectedBytes(data: NSData)
-    case BadCRC(data: NSData)
-}
-
 public protocol ReceiverDelegate: class {
     func receiver(receiver: Receiver, didReadGlucoseHistory glucoseHistory: [GlucoseG4])
 
@@ -55,16 +50,12 @@ public class Receiver: BluetoothManagerDelegate {
     func bluetoothManager(manager: BluetoothManager, didReceiveBytes bytes: NSData) {
         if messageInProgress {
             append(bytes)
-        } else {
-            if let header = MessageHeader(data: bytes[0...3]) {
-                messageInProgress = true
-                receivedBytes = 0
-                expectedBytes = header.totalBytes
-                message = NSMutableData(capacity: Int(expectedBytes))
-                append(bytes)
-            } else {
-                self.delegate?.receiver(self, didError: ReceiverError.UnexpectedBytes(data: bytes))
-            }
+        } else if bytes.length >= 4, let header = MessageHeader(data: bytes[0...3]) {
+            messageInProgress = true
+            receivedBytes = 0
+            expectedBytes = header.totalBytes
+            message = NSMutableData(capacity: Int(expectedBytes))
+            append(bytes)
         }
     }
 
@@ -85,11 +76,6 @@ public class Receiver: BluetoothManagerDelegate {
     }
 
     private func parseMessage(message: NSData, receivedAt: NSDate) {
-        guard message.crcValid() else {
-            self.delegate?.receiver(self, didError: ReceiverError.BadCRC(data: message))
-            return
-        }
-
         if let systemTimeMessage = SystemTimeMessage(data: message) {
             clockOffset = receivedAt.timeIntervalSince1970 - Double(systemTimeMessage.time)
             if let pending = glucoseHistoryAwaitingClock {
