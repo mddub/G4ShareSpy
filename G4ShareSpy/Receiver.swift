@@ -50,7 +50,7 @@ public class Receiver: BluetoothManagerDelegate {
     func bluetoothManager(manager: BluetoothManager, didReceiveBytes bytes: NSData) {
         if messageInProgress {
             append(bytes)
-        } else if let header = MessageHeader(data: bytes[0...3]) {
+        } else if bytes.length >= 4, let header = MessageHeader(data: bytes[0...3]) {
             messageInProgress = true
             receivedBytes = 0
             expectedBytes = header.totalBytes
