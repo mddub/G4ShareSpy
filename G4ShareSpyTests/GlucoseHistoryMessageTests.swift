@@ -37,12 +37,12 @@ let historyBytesHex = [
     "ffffffffffffffffffffffffffffffffffffffff",
     "ffffffffffffffffffffffffffffffffffffffff",
     "ffffffffffffffffffffffff6d52",
-].joinWithSeparator("")
+].joined(separator: "")
 
 class GlucoseHistoryMessageTests: XCTestCase {
 
     func testHistory() {
-        let data = NSData(hexadecimalString: historyBytesHex)!
+        let data = Data(hexadecimalString: historyBytesHex)!
 
         let history = GlucoseHistoryMessage(data: data)
         XCTAssertNotNil(history)
@@ -50,7 +50,7 @@ class GlucoseHistoryMessageTests: XCTestCase {
         if let history = history {
             XCTAssertEqual(history.records.count, 26)
 
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
 
             XCTAssertEqual(history.records[0].sequence, 53808)
@@ -58,20 +58,20 @@ class GlucoseHistoryMessageTests: XCTestCase {
             XCTAssertEqual(history.records[0].trend, 5)
             XCTAssertEqual(history.records[0].isDisplayOnly, false)
             XCTAssertEqual(history.records[0].systemTime, 238472962)
-            XCTAssertEqual(history.records[0].wallTime, dateFormatter.dateFromString("2016-07-23T4:34:31Z"))
+            XCTAssertEqual(history.records[0].wallTime, dateFormatter.date(from: "2016-07-23T4:34:31Z"))
 
             XCTAssertEqual(history.records[25].sequence, 53833)
             XCTAssertEqual(history.records[25].glucose, 88)
             XCTAssertEqual(history.records[25].trend, 4)
             XCTAssertEqual(history.records[25].isDisplayOnly, true)
             XCTAssertEqual(history.records[25].systemTime, 238480162)
-            XCTAssertEqual(history.records[25].wallTime, dateFormatter.dateFromString("2016-07-23T06:34:31Z"))
+            XCTAssertEqual(history.records[25].wallTime, dateFormatter.date(from: "2016-07-23T06:34:31Z"))
         }
     }
 
     func testBadCRC() {
-        let data = NSData(
-            hexadecimalString: historyBytesHex.substringToIndex(historyBytesHex.endIndex.advancedBy(-1)) + "3"
+        let data = Data(
+            hexadecimalString: historyBytesHex.substring(to: historyBytesHex.characters.index(historyBytesHex.endIndex, offsetBy: -1)) + "3"
         )!
 
         XCTAssertNil(GlucoseHistoryMessage(data: data))

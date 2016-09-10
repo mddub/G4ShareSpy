@@ -14,8 +14,8 @@ public struct GlucoseG4 {
     public let glucose: UInt16
     public let isDisplayOnly: Bool
     public let trend: UInt8
-    public let time: NSDate
-    public let wallTime: NSDate
+    public let time: Date
+    public let wallTime: Date
     public let systemTime: UInt32
     
 }

@@ -17,8 +17,8 @@ struct MessageHeader {
 
     let totalBytes: UInt16
 
-    init?(data: NSData) {
-        guard data.length == self.dynamicType.length else {
+    init?(data: Data) {
+        guard data.count == type(of: self).length else {
             return nil
         }
 
@@ -26,7 +26,7 @@ struct MessageHeader {
             return nil
         }
 
-        totalBytes = data[1...2]
+        totalBytes = data[1..<3]
     }
 
 }

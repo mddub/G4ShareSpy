@@ -11,8 +11,8 @@ import Foundation
 // 2009-01-01T00:00:00
 let dexcomClockStart: Double = 1230796800
 
-extension NSDate {
-    static func fromDexcomSystemTime(seconds: UInt32) -> NSDate {
-        return NSDate(timeIntervalSince1970: dexcomClockStart + Double(seconds))
+extension Date {
+    static func fromDexcomSystemTime(_ seconds: UInt32) -> Date {
+        return Date(timeIntervalSince1970: dexcomClockStart + Double(seconds))
     }
 }
