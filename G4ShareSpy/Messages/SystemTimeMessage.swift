@@ -17,14 +17,14 @@ struct SystemTimeMessage {
 
     let time: UInt32
 
-    init?(data: NSData) {
-        guard data.length == self.dynamicType.length && data.crcValid() else {
+    init?(data: Data) {
+        guard data.count == type(of: self).length && data.crcValid() else {
             return nil
         }
 
         // sanity check that it's not just any 4-byte message, but a plausible date
-        let seconds = data[4...7] as UInt32
-        guard abs(NSDate.fromDexcomSystemTime(seconds).timeIntervalSinceNow) < (7 * 24 * 60 * 60) else {
+        let seconds = data[4..<8] as UInt32
+        guard abs(Date.fromDexcomSystemTime(seconds).timeIntervalSinceNow) < (7 * 24 * 60 * 60) else {
             return nil
         }
 

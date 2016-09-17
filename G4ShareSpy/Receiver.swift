@@ -9,16 +9,16 @@
 import Foundation
 
 public protocol ReceiverDelegate: class {
-    func receiver(receiver: Receiver, didReadGlucoseHistory glucoseHistory: [GlucoseG4])
+    func receiver(_ receiver: Receiver, didReadGlucoseHistory glucoseHistory: [GlucoseG4])
 
-    func receiver(receiver: Receiver, didError error: ErrorType)
+    func receiver(_ receiver: Receiver, didError error: Error)
 
     // Optional diagnostic logging
-    func receiver(receiver: Receiver, didLogBluetoothEvent event: String)
+    func receiver(_ receiver: Receiver, didLogBluetoothEvent event: String)
 }
 
 extension ReceiverDelegate {
-    func receiver(receiver: Receiver, didLogBluetoothEvent event: String) {}
+    func receiver(_ receiver: Receiver, didLogBluetoothEvent event: String) {}
 }
 
 public class Receiver: BluetoothManagerDelegate {
@@ -32,7 +32,7 @@ public class Receiver: BluetoothManagerDelegate {
     private var receivedBytes: UInt16 = 0
     private var expectedBytes: UInt16 = 0
 
-    public var clockOffset: NSTimeInterval?
+    public var clockOffset: TimeInterval?
     private var glucoseHistoryAwaitingClock: GlucoseHistoryMessage?
 
     public init() {
@@ -41,16 +41,16 @@ public class Receiver: BluetoothManagerDelegate {
 
     // MARK: - BluetoothManagerDelegate
 
-    func bluetoothManagerIsReady(manager: BluetoothManager) {}
+    func bluetoothManagerIsReady(_ manager: BluetoothManager) {}
 
-    func bluetoothManager(manager: BluetoothManager, didError error: ErrorType) {
+    func bluetoothManager(_ manager: BluetoothManager, didError error: Error) {
         self.delegate?.receiver(self, didError: error)
     }
 
-    func bluetoothManager(manager: BluetoothManager, didReceiveBytes bytes: NSData) {
+    func bluetoothManager(_ manager: BluetoothManager, didReceiveBytes bytes: Data) {
         if messageInProgress {
             append(bytes)
-        } else if bytes.length >= 4, let header = MessageHeader(data: bytes[0...3]) {
+        } else if bytes.count >= 4, let header = MessageHeader(data: bytes.subdata(in: 0..<4)) {
             messageInProgress = true
             receivedBytes = 0
             expectedBytes = header.totalBytes
@@ -59,23 +59,23 @@ public class Receiver: BluetoothManagerDelegate {
         }
     }
 
-    func bluetoothManagerDidLogEvent(manager: BluetoothManager, event: String) {
+    func bluetoothManagerDidLogEvent(_ manager: BluetoothManager, event: String) {
         self.delegate?.receiver(self, didLogBluetoothEvent: event)
     }
 
     // MARK: - Helpers
 
-    private func append(bytes: NSData) {
-        message!.appendData(bytes)
-        receivedBytes += UInt16(bytes.length)
+    private func append(_ bytes: Data) {
+        message!.append(bytes)
+        receivedBytes += UInt16(bytes.count)
         if receivedBytes >= expectedBytes {
             messageInProgress = false
-            parseMessage(message!, receivedAt: NSDate())
+            parseMessage(message! as Data, receivedAt: Date())
             message = nil
         }
     }
 
-    private func parseMessage(message: NSData, receivedAt: NSDate) {
+    private func parseMessage(_ message: Data, receivedAt: Date) {
         if let systemTimeMessage = SystemTimeMessage(data: message) {
             clockOffset = receivedAt.timeIntervalSince1970 - Double(systemTimeMessage.time)
             if let pending = glucoseHistoryAwaitingClock {
@@ -91,14 +91,14 @@ public class Receiver: BluetoothManagerDelegate {
         }
     }
 
-    private func emitGlucose(history: GlucoseHistoryMessage, clockOffset: Double) {
+    private func emitGlucose(_ history: GlucoseHistoryMessage, clockOffset: Double) {
         let glucose = history.records.map({
             return GlucoseG4(
                 sequence: $0.sequence,
                 glucose: $0.glucose,
                 isDisplayOnly: $0.isDisplayOnly,
                 trend: $0.trend,
-                time: NSDate(timeIntervalSince1970: Double($0.systemTime) + clockOffset),
+                time: Date(timeIntervalSince1970: Double($0.systemTime) + clockOffset),
                 wallTime: $0.wallTime,
                 systemTime: $0.systemTime
             )

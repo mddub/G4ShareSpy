@@ -23,21 +23,21 @@ struct GlucoseHistoryRecord {
 
     let sequence: UInt32
     let systemTime: UInt32
-    let wallTime: NSDate!
+    let wallTime: Date!
     let glucose: UInt16
     let isDisplayOnly: Bool
     let trend: UInt8
 
-    init?(data: NSData, index: UInt32) {
-        guard data.length == self.dynamicType.length && data.crcValid() else {
+    init?(data: Data, index: UInt32) {
+        guard data.count == type(of: self).length && data.crcValid() else {
             return nil
         }
 
         sequence = index
-        systemTime = data[0...3]
-        wallTime = NSDate.fromDexcomSystemTime(data[4...7])
-        glucose = data[8...9] & EGV_VALUE_MASK
-        isDisplayOnly = data[8...9] & EGV_DISPLAY_ONLY_MASK > 0
+        systemTime = data[0..<4]
+        wallTime = Date.fromDexcomSystemTime(data[4..<8])
+        glucose = data[8..<10] & EGV_VALUE_MASK
+        isDisplayOnly = data[8..<10] & EGV_DISPLAY_ONLY_MASK > 0
         trend = data[10] & EGV_TREND_ARROW_MASK
     }
     

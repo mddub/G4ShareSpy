@@ -24,8 +24,8 @@ struct GlucoseHistoryHeader {
     let firstIndex: UInt32
     let recordCount: UInt32
 
-    init?(data: NSData) {
-        guard data.length == self.dynamicType.length && data.crcValid() else {
+    init?(data: Data) {
+        guard data.count == type(of: self).length && data.crcValid() else {
             return nil
         }
 
@@ -33,8 +33,8 @@ struct GlucoseHistoryHeader {
             return nil
         }
 
-        firstIndex = data[0...3]
-        recordCount = data[4...8]
+        firstIndex = data[0..<4]
+        recordCount = data[4..<9]
     }
 
 }
