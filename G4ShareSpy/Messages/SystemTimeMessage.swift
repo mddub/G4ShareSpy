@@ -24,7 +24,7 @@ struct SystemTimeMessage {
 
         // sanity check that it's not just any 4-byte message, but a plausible date
         let seconds = data[4..<8] as UInt32
-        guard abs(Date.fromDexcomSystemTime(seconds).timeIntervalSinceNow) < (7 * 24 * 60 * 60) else {
+        guard abs(Date.fromDexcomSystemTime(seconds).timeIntervalSinceNow) < (10 * 365 * 24 * 60 * 60) else {
             return nil
         }
 
