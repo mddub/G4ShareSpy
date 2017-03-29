@@ -126,7 +126,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     }
 
     func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
-        delegate?.bluetoothManagerDidLogEvent(self, event: "willRestoreState: self.peripheral is \(peripheral)")
+        delegate?.bluetoothManagerDidLogEvent(self, event: "willRestoreState: self.peripheral is \(String(describing: peripheral))")
 
         if peripheral == nil, let peripherals = dict[CBCentralManagerRestoredStatePeripheralsKey] as? [CBPeripheral] {
             for restored in peripherals {
@@ -151,7 +151,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     }
 
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        delegate?.bluetoothManagerDidLogEvent(self, event: "didDisconnectPeripheral (error: \(error))")
+        delegate?.bluetoothManagerDidLogEvent(self, event: "didDisconnectPeripheral (error: \(String(describing: error)))")
         if let error = error {
             delegate?.bluetoothManager(self, didError: error)
         }
@@ -160,7 +160,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     }
 
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        delegate?.bluetoothManagerDidLogEvent(self, event: "didFailToConnectPeripheral (error: \(error))")
+        delegate?.bluetoothManagerDidLogEvent(self, event: "didFailToConnectPeripheral (error: \(String(describing: error)))")
         if let error = error {
             delegate?.bluetoothManager(self, didError: error)
         }
