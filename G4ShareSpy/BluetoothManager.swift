@@ -139,7 +139,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         let service = CBUUID(string: ReceiverServiceUUID.CGMService.rawValue)
-        let knownServiceUUIDs = peripheral.services?.flatMap({ $0.uuid }) ?? []
+        let knownServiceUUIDs = peripheral.services?.compactMap({ $0.uuid }) ?? []
 
         if knownServiceUUIDs.contains(service) {
             delegate?.bluetoothManagerDidLogEvent(self, event: "didConnectPeripheral: already discovered services")
@@ -177,7 +177,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         }
         for service in peripheral.services ?? [] where service.uuid.uuidString == ReceiverServiceUUID.CGMService.rawValue {
             let characteristic = CBUUID(string: CGMServiceCharacteristicUUID.Rx.rawValue)
-            let knownCharacteristics = service.characteristics?.flatMap({ $0.uuid }) ?? []
+            let knownCharacteristics = service.characteristics?.compactMap({ $0.uuid }) ?? []
 
             if knownCharacteristics.contains(characteristic) {
                 delegate?.bluetoothManagerDidLogEvent(self, event: "didDiscoverServices: already discovered characteristics")
