@@ -6,7 +6,36 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		43BC2C9121157BD700F9628F /* Cartfile */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 43BC2C9221157BD700F9628F /* Build configuration list for PBXAggregateTarget "Cartfile" */;
+			buildPhases = (
+				43BC2C9521157BE300F9628F /* Build Carthage Dependencies */,
+			);
+			dependencies = (
+			);
+			name = Cartfile;
+			productName = Cartfile;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
+		43AB513921331BA700B3D58D /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AB513821331BA700B3D58D /* LocalizedString.swift */; };
+		43AB513C21331BBF00B3D58D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43AB513A21331BBF00B3D58D /* Localizable.strings */; };
+		43BC2C9821157D2A00F9628F /* LoopKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43BC2C9721157D2900F9628F /* LoopKit.framework */; };
+		43BC2C9A21157D9300F9628F /* LoopKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43BC2C9921157D9300F9628F /* LoopKitUI.framework */; };
+		43BC2C9F21157DF300F9628F /* G4CGMManager+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC2C9D21157DF200F9628F /* G4CGMManager+UI.swift */; };
+		43BC2CA021157DF300F9628F /* G4CGMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC2C9E21157DF200F9628F /* G4CGMManager.swift */; };
+		43BC2CA321157E4300F9628F /* ShareClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43BC2CA121157E4300F9628F /* ShareClient.framework */; };
+		43BC2CA421157E4300F9628F /* ShareClientUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43BC2CA221157E4300F9628F /* ShareClientUI.framework */; };
+		43BC2CA621157E6A00F9628F /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43BC2CA521157E6900F9628F /* HealthKit.framework */; };
+		43BC2CA821157EA600F9628F /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC2CA721157EA600F9628F /* TimeInterval.swift */; };
+		43BC2CAA21157F1900F9628F /* GlucoseG4+CGMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC2CA921157F1900F9628F /* GlucoseG4+CGMManager.swift */; };
+		43BC2CAC21157F2B00F9628F /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC2CAB21157F2B00F9628F /* HKUnit.swift */; };
+		43BC2CAE211631DC00F9628F /* G4CGMManagerSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC2CAD211631DC00F9628F /* G4CGMManagerSettingsViewController.swift */; };
+		43BC2CB0211632BA00F9628F /* IdentifiableClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC2CAF211632B900F9628F /* IdentifiableClass.swift */; };
+		43BC2CB2211634B900F9628F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BC2CB1211634B900F9628F /* UIColor.swift */; };
 		4D80122A1D4205A5006A7044 /* NSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8012291D4205A5006A7044 /* NSData.swift */; };
 		4DCEF2541D41A2A200724BCD /* G4ShareSpy.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DCEF2531D41A2A200724BCD /* G4ShareSpy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4DCEF25B1D41A2A200724BCD /* G4ShareSpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DCEF2501D41A2A200724BCD /* G4ShareSpy.framework */; };
@@ -26,6 +55,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		43BC2C9B21157DBC00F9628F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DCEF2471D41A2A200724BCD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43BC2C9121157BD700F9628F;
+			remoteInfo = Cartfile;
+		};
 		4DCEF25C1D41A2A200724BCD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4DCEF2471D41A2A200724BCD /* Project object */;
@@ -36,6 +72,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		43AB513821331BA700B3D58D /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
+		43AB513B21331BBF00B3D58D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		43AB513D21331BD800B3D58D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		43AB513E21331BDF00B3D58D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		43AB513F21331BE300B3D58D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		43AB514021331BE600B3D58D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		43AB514121331BEA00B3D58D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		43AB514221331BEF00B3D58D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		43AB514321331BFF00B3D58D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		43AB514421331C0400B3D58D /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		43AB514521331C0700B3D58D /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
+		43BC2C9721157D2900F9628F /* LoopKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopKit.framework; path = Carthage/Build/iOS/LoopKit.framework; sourceTree = "<group>"; };
+		43BC2C9921157D9300F9628F /* LoopKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopKitUI.framework; path = Carthage/Build/iOS/LoopKitUI.framework; sourceTree = "<group>"; };
+		43BC2C9D21157DF200F9628F /* G4CGMManager+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "G4CGMManager+UI.swift"; sourceTree = "<group>"; };
+		43BC2C9E21157DF200F9628F /* G4CGMManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = G4CGMManager.swift; sourceTree = "<group>"; };
+		43BC2CA121157E4300F9628F /* ShareClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShareClient.framework; path = Carthage/Build/iOS/ShareClient.framework; sourceTree = "<group>"; };
+		43BC2CA221157E4300F9628F /* ShareClientUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShareClientUI.framework; path = Carthage/Build/iOS/ShareClientUI.framework; sourceTree = "<group>"; };
+		43BC2CA521157E6900F9628F /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		43BC2CA721157EA600F9628F /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
+		43BC2CA921157F1900F9628F /* GlucoseG4+CGMManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GlucoseG4+CGMManager.swift"; sourceTree = "<group>"; };
+		43BC2CAB21157F2B00F9628F /* HKUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKUnit.swift; sourceTree = "<group>"; };
+		43BC2CAD211631DC00F9628F /* G4CGMManagerSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = G4CGMManagerSettingsViewController.swift; sourceTree = "<group>"; };
+		43BC2CAF211632B900F9628F /* IdentifiableClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifiableClass.swift; sourceTree = "<group>"; };
+		43BC2CB1211634B900F9628F /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		4D8012291D4205A5006A7044 /* NSData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSData.swift; sourceTree = "<group>"; };
 		4DCEF2501D41A2A200724BCD /* G4ShareSpy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = G4ShareSpy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCEF2531D41A2A200724BCD /* G4ShareSpy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = G4ShareSpy.h; sourceTree = "<group>"; };
@@ -62,6 +122,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43BC2CA621157E6A00F9628F /* HealthKit.framework in Frameworks */,
+				43BC2C9821157D2A00F9628F /* LoopKit.framework in Frameworks */,
+				43BC2C9A21157D9300F9628F /* LoopKitUI.framework in Frameworks */,
+				43BC2CA321157E4300F9628F /* ShareClient.framework in Frameworks */,
+				43BC2CA421157E4300F9628F /* ShareClientUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,12 +141,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43BC2C9621157D2900F9628F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				43BC2CA521157E6900F9628F /* HealthKit.framework */,
+				43BC2CA121157E4300F9628F /* ShareClient.framework */,
+				43BC2CA221157E4300F9628F /* ShareClientUI.framework */,
+				43BC2C9921157D9300F9628F /* LoopKitUI.framework */,
+				43BC2C9721157D2900F9628F /* LoopKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4DCEF2461D41A2A200724BCD = {
 			isa = PBXGroup;
 			children = (
 				4DCEF2521D41A2A200724BCD /* G4ShareSpy */,
 				4DCEF25E1D41A2A200724BCD /* G4ShareSpyTests */,
 				4DCEF2511D41A2A200724BCD /* Products */,
+				43BC2C9621157D2900F9628F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,14 +175,21 @@
 		4DCEF2521D41A2A200724BCD /* G4ShareSpy */ = {
 			isa = PBXGroup;
 			children = (
+				43AB513A21331BBF00B3D58D /* Localizable.strings */,
 				4DCEF2531D41A2A200724BCD /* G4ShareSpy.h */,
 				4DCEF2551D41A2A200724BCD /* Info.plist */,
 				4DCEF26A1D41A2E800724BCD /* BluetoothManager.swift */,
 				4DCEF26B1D41A2E800724BCD /* BluetoothServices.swift */,
 				4DCEF26C1D41A2E800724BCD /* Extensions */,
+				43BC2C9E21157DF200F9628F /* G4CGMManager.swift */,
+				43BC2C9D21157DF200F9628F /* G4CGMManager+UI.swift */,
+				43BC2CAD211631DC00F9628F /* G4CGMManagerSettingsViewController.swift */,
 				4DCEF2701D41A2E800724BCD /* GlucoseG4.swift */,
+				43BC2CA921157F1900F9628F /* GlucoseG4+CGMManager.swift */,
+				43BC2CAF211632B900F9628F /* IdentifiableClass.swift */,
 				4DCEF2711D41A2E800724BCD /* Messages */,
 				4DCEF2771D41A2E800724BCD /* Receiver.swift */,
+				43BC2CB1211634B900F9628F /* UIColor.swift */,
 			);
 			path = G4ShareSpy;
 			sourceTree = "<group>";
@@ -122,9 +207,12 @@
 		4DCEF26C1D41A2E800724BCD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				43BC2CAB21157F2B00F9628F /* HKUnit.swift */,
+				43AB513821331BA700B3D58D /* LocalizedString.swift */,
 				4DCEF26D1D41A2E800724BCD /* NSData+CRC.swift */,
 				4DCEF26E1D41A2E800724BCD /* NSData.swift */,
 				4DCEF26F1D41A2E800724BCD /* NSDate.swift */,
+				43BC2CA721157EA600F9628F /* TimeInterval.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -167,6 +255,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				43BC2C9C21157DBC00F9628F /* PBXTargetDependency */,
 			);
 			name = G4ShareSpy;
 			productName = G4ShareSpy;
@@ -198,9 +287,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Mark Wilson";
 				TargetAttributes = {
+					43BC2C9121157BD700F9628F = {
+						CreatedOnToolsVersion = 9.4.1;
+						ProvisioningStyle = Automatic;
+					};
 					4DCEF24F1D41A2A200724BCD = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0900;
@@ -217,6 +310,16 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
+				"zh-Hans",
+				nl,
+				fr,
+				de,
+				es,
+				it,
+				ru,
+				pl,
+				nb,
 			);
 			mainGroup = 4DCEF2461D41A2A200724BCD;
 			productRefGroup = 4DCEF2511D41A2A200724BCD /* Products */;
@@ -225,6 +328,7 @@
 			targets = (
 				4DCEF24F1D41A2A200724BCD /* G4ShareSpy */,
 				4DCEF2591D41A2A200724BCD /* G4ShareSpyTests */,
+				43BC2C9121157BD700F9628F /* Cartfile */,
 			);
 		};
 /* End PBXProject section */
@@ -234,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43AB513C21331BBF00B3D58D /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,23 +351,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		43BC2C9521157BE300F9628F /* Build Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Carthage Dependencies";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -f $PROJECT_DIR/.gitmodules ]; then\n    echo \"Skipping checkout due to presence of .gitmodules file\"\n    if [ $ACTION = \"install\" ]; then\n        echo \"You're installing: Make sure to keep all submodules up-to-date and run carthage build after changes.\"\n    fi\nelse\n    echo \"Bootstrapping carthage dependencies\"\n    /usr/local/bin/carthage bootstrap --project-directory \"$SRCROOT\" --cache-builds\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4DCEF24B1D41A2A200724BCD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43BC2CAE211631DC00F9628F /* G4CGMManagerSettingsViewController.swift in Sources */,
 				4DCEF2791D41A2E800724BCD /* BluetoothServices.swift in Sources */,
+				43BC2CA821157EA600F9628F /* TimeInterval.swift in Sources */,
 				4DCEF2781D41A2E800724BCD /* BluetoothManager.swift in Sources */,
 				4DCEF27B1D41A2E800724BCD /* NSData.swift in Sources */,
 				4DCEF2801D41A2E800724BCD /* GlucoseHistoryRecord.swift in Sources */,
 				4DCEF2811D41A2E800724BCD /* MessageHeader.swift in Sources */,
+				43BC2C9F21157DF300F9628F /* G4CGMManager+UI.swift in Sources */,
 				4DCEF27E1D41A2E800724BCD /* GlucoseHistoryHeader.swift in Sources */,
+				43BC2CB2211634B900F9628F /* UIColor.swift in Sources */,
 				4DCEF2831D41A2E800724BCD /* Receiver.swift in Sources */,
 				4DCEF27D1D41A2E800724BCD /* GlucoseG4.swift in Sources */,
 				4DCEF27A1D41A2E800724BCD /* NSData+CRC.swift in Sources */,
+				43BC2CB0211632BA00F9628F /* IdentifiableClass.swift in Sources */,
 				4DCEF27C1D41A2E800724BCD /* NSDate.swift in Sources */,
 				4DCEF2821D41A2E800724BCD /* SystemTimeMessage.swift in Sources */,
+				43BC2CA021157DF300F9628F /* G4CGMManager.swift in Sources */,
+				43AB513921331BA700B3D58D /* LocalizedString.swift in Sources */,
 				4DCEF27F1D41A2E800724BCD /* GlucoseHistoryMessage.swift in Sources */,
+				43BC2CAC21157F2B00F9628F /* HKUnit.swift in Sources */,
+				43BC2CAA21157F1900F9628F /* GlucoseG4+CGMManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +409,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		43BC2C9C21157DBC00F9628F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43BC2C9121157BD700F9628F /* Cartfile */;
+			targetProxy = 43BC2C9B21157DBC00F9628F /* PBXContainerItemProxy */;
+		};
 		4DCEF25D1D41A2A200724BCD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4DCEF24F1D41A2A200724BCD /* G4ShareSpy */;
@@ -285,11 +421,48 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		43AB513A21331BBF00B3D58D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43AB513B21331BBF00B3D58D /* Base */,
+				43AB513D21331BD800B3D58D /* zh-Hans */,
+				43AB513E21331BDF00B3D58D /* nl */,
+				43AB513F21331BE300B3D58D /* fr */,
+				43AB514021331BE600B3D58D /* de */,
+				43AB514121331BEA00B3D58D /* es */,
+				43AB514221331BEF00B3D58D /* it */,
+				43AB514321331BFF00B3D58D /* ru */,
+				43AB514421331C0400B3D58D /* pl */,
+				43AB514521331C0700B3D58D /* nb */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		43BC2C9321157BD700F9628F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		43BC2C9421157BD700F9628F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		4DCEF2621D41A2A200724BCD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -299,12 +472,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -332,7 +507,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -348,6 +523,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -357,12 +533,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -384,7 +562,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -405,6 +583,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 3;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = G4ShareSpy/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -424,6 +606,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 3;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = G4ShareSpy/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -456,6 +642,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		43BC2C9221157BD700F9628F /* Build configuration list for PBXAggregateTarget "Cartfile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43BC2C9321157BD700F9628F /* Debug */,
+				43BC2C9421157BD700F9628F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4DCEF24A1D41A2A200724BCD /* Build configuration list for PBXProject "G4ShareSpy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
