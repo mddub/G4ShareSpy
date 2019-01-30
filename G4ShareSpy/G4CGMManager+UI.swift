@@ -15,8 +15,11 @@ extension G4CGMManager: CGMManagerUI {
         return nil  // We don't require configuration
     }
 
-    public func settingsViewController(for glucoseUnit: HKUnit) -> UIViewController {
-        return G4CGMManagerSettingsViewController(cgmManager: self, glucoseUnit: glucoseUnit)
+    public func settingsViewController(for glucoseUnit: HKUnit) -> (UIViewController & CompletionNotifying) {
+        let settings = G4CGMManagerSettingsViewController(cgmManager: self, glucoseUnit: glucoseUnit)
+        let nav = SettingsNavigationViewController()
+        nav.pushViewController(settings, animated: false)
+        return nav
     }
 
     public var smallImage: UIImage? {
