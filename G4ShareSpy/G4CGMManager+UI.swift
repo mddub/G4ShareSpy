@@ -17,8 +17,7 @@ extension G4CGMManager: CGMManagerUI {
 
     public func settingsViewController(for glucoseUnit: HKUnit) -> (UIViewController & CompletionNotifying) {
         let settings = G4CGMManagerSettingsViewController(cgmManager: self, glucoseUnit: glucoseUnit)
-        let nav = SettingsNavigationViewController()
-        nav.pushViewController(settings, animated: false)
+        let nav = SettingsNavigationViewController(rootViewController: settings)
         return nav
     }
 
