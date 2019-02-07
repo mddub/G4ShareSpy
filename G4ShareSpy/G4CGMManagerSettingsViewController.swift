@@ -46,6 +46,10 @@ class G4CGMManagerSettingsViewController: UITableViewController {
     }
 
     @objc func doneTapped(_ sender: Any) {
+        complete()
+    }
+
+    private func complete() {
         if let nav = navigationController as? SettingsNavigationViewController {
             nav.notifyComplete()
         }
@@ -155,7 +159,7 @@ class G4CGMManagerSettingsViewController: UITableViewController {
         case .delete:
             let confirmVC = UIAlertController(cgmDeletionHandler: {
                 self.cgmManager.cgmManagerDelegate?.cgmManagerWantsDeletion(self.cgmManager)
-                self.navigationController?.popViewController(animated: true)
+                self.complete()
             })
 
             present(confirmVC, animated: true) {

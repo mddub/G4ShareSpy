@@ -11,7 +11,7 @@ import HealthKit
 
 
 extension G4CGMManager: CGMManagerUI {
-    public static func setupViewController() -> (UIViewController & CGMManagerSetupViewController)? {
+    public static func setupViewController() -> (UIViewController & CGMManagerSetupViewController & CompletionNotifying)? {
         return nil  // We don't require configuration
     }
 
